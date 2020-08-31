@@ -1,0 +1,50 @@
+﻿<Window x:Class="SQLiteDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SQLiteDemo"
+        mc:Ignorable="d"
+        Title="SQLite Database Test Application" Height="450" Width="800" Background="BlanchedAlmond">
+
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Grid.Row="0" Content="Add Person" Click="btn_Add" Width="100"/>
+            <TextBox Name="txtRandomPeople" Text="1" Width="30" TextAlignment="Center" Margin="5"/>
+            <Button Grid.Row="0" Content="Add Random" Click="btn_AddRandom" Width="100"/>
+            <Button Grid.Row="0" Content="Remove Person" Click="btn_Remove" Width="100"/>
+            <Label Content="First Name:"/>
+            <TextBox Name="txtFirstName" Width="150"/>
+            <Label Content="Last Name:"/>
+            <TextBox Name ="txtLastName" Width="150"/>
+        </StackPanel>
+
+        <ListView Name="listView1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" AlternationCount="2" 
+                  BorderThickness="1" Margin="0,5,0,4.5" SelectionMode="Multiple" SelectionChanged="listView1_SelectionChanged"
+                  ItemsSource="{Binding}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="PersonID" Width="100" DisplayMemberBinding="{Binding PersonID}"/>
+                    <GridViewColumn Header="First Name" Width="100" DisplayMemberBinding="{Binding FirstName}"/>
+                    <GridViewColumn Header="Last Name" Width="100" DisplayMemberBinding="{Binding LastName}"/>
+                    <GridViewColumn Header="Phone" Width="100" DisplayMemberBinding="{Binding Phone}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Background="Wheat">
+            <Label Content="Number of people: "/>
+            <TextBlock Name="txtNumberofPeople" Text="0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="40"/>
+            <Border Height="18" BorderThickness="1" BorderBrush="Black" Margin="4"/>
+            <Label Content="Number of people selected: "/>
+            <TextBlock Name="txtNumberSelected" Text="0" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+        </StackPanel>
+    </Grid>
+
+</Window>
